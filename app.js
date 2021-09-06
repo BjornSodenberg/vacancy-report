@@ -21,14 +21,14 @@ const API_ENDPOINTS = {
   }
 
   const geoID = await getGeoIdByCityName('Новосибирск');
-  if(geoID === -1) alert('Ошибка при  загрузке города');
+  if(!geoID) alert('Ошибка при  загрузке города');
   else query.city_id = geoID;
 
   const vacancies = await getVacancies(query);
   if(!vacancies) alert('Ошибка при загрузке списка вакансий');
 
   const rubrics = await getRubrics();
-  if(rubrics === -1) alert('Ошибка при загрузке списка рубрик');
+  if(!rubrics) alert('Ошибка при загрузке списка рубрик');
 
   const listOfWords = getTopInWords(vacancies);
   const listOfRubrics = getTopByRubrics(vacancies,rubrics);
